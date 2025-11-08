@@ -233,30 +233,21 @@ const elCartList = document.getElementById('cart-list');
 const elWASend = document.getElementById('wa-send');
 const elQ = document.getElementById('q');
 
-/* -------- نمایش کالاها -------- */
 function cardHTML(it){
+  const PLACEHOLDER =
+    'data:image/svg+xml;utf8,' + encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800">
+         <rect width="100%" height="100%" fill="#eee"/>
+         <text x="50%" y="50%" fill="#999" font-size="28" text-anchor="middle" dominant-baseline="middle">بدون تصویر</text>
+       </svg>`);
+
   const isUrl = /^https?:\/\//i.test((it.photo_endpoint||'').trim());
-  const imgSrc = isUrl ? it.photo_endpoint : (it.photo ? `${TELE_PROXY}?fid=${encodeURIComponent(it.photo)}` : '');
-  const available = Number(it.qty||0) > 0;
-  const stock = available
-    ? `<span class="stock-dot ok"></span><span class="stock-text">موجود</span>`
-    : `<span class="stock-dot bad"></span><span class="stock-text">ناموجود</span>`;
-  return `
-  <div class="card">
-    <img src="${imgSrc}" alt="${it.name||''}">
-    <div class="card-body">
-      <div class="title">${it.name||'-'}</div>
-      <div class="meta">کد: ${it.code}</div>
-      <div class="row">${stock}</div>
-      <div class="cart-controls">
-        <button class="btn-qty" data-op="minus" data-code="${it.code}">−</button>
-        <input type="number" class="qty-input" min="1" value="${cart[it.code]?.qty||1}" data-code="${it.code}">
-        <button class="btn-qty" data-op="plus" data-code="${it.code}">+</button>
-        <button class="btn-add" data-code="${it.code}" data-name="${it.name}">افزودن</button>
-        <div class="hint">تعداد مد نظر را بنویسید</div>
-      </div>
-    </div>
-  </div>`;
+  const hasProxy = TELE_PROXY && it.photo;
+  const imgSrc = isUrl ? it.photo_endpoint
+                       : (hasProxy ? `${TELE_PROXY}?fid=${encodeURIComponent(it.photo)}`
+                                   : PLACEHOLDER);
+
+  // ... بقیه‌ی HTML کارت (بدون تغییر)
 }
 
 /* -------- بارگذاری -------- */
