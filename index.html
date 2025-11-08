@@ -9,81 +9,27 @@
 <meta name="theme-color" content="#5b2aa6" />
 
 <style>
-:root {
-  --brand:#5b2aa6;
-  --brand-soft:#7a3ef2;
-  --bg:#f6f7fb;
-  --card:#fff;
-  --text:#222;
-  --muted:#666;
-  --ok:#12a150;
-  --bad:#d54b4b;
-  --radius:18px;
+:root{
+  --brand:#5b2aa6; --brand-soft:#7a3ef2;
+  --bg:#f6f7fb; --card:#fff; --text:#222; --muted:#666;
+  --ok:#12a150; --bad:#d54b4b; --radius:18px;
 }
-
-/* ---- ساختار اصلی ---- */
 *{box-sizing:border-box}
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font:15px/1.6 Vazirmatn,IRANSans,system-ui;
-}
-header {
-  background:var(--brand);
-  color:#fff;
-  padding:22px 16px;
-  text-align:center;
-  position:sticky;
-  top:0;
-  z-index:5;
-}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 Vazirmatn,IRANSans,system-ui}
+header{background:var(--brand);color:#fff;padding:22px 16px;text-align:center;position:sticky;top:0;z-index:5}
 h1{margin:0;font-weight:800}
 
-.search-wrap{
-  display:flex;
-  justify-content:center;
-  margin:16px 0;
-}
-.search {
-  width:min(720px,92%);
-  padding:10px 14px;
-  border-radius:999px;
-  border:0;
-  outline:0;
-  background:#fff;
-  box-shadow:0 6px 18px rgba(0,0,0,.06);
-}
+.search-wrap{display:flex;justify-content:center;margin:16px 0}
+.search{width:min(720px,92%);padding:10px 14px;border-radius:999px;border:0;outline:0;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06)}
 
-.grid {
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
-  padding:12px;
-  width:min(1400px,98%);
-  margin:0 auto;
-}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:12px;width:min(1400px,98%);margin:0 auto}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:800px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:560px){.grid{grid-template-columns:repeat(3,1fr)}}
 
-.card {
-  background:var(--card);
-  border-radius:var(--radius);
-  box-shadow:0 4px 10px rgba(0,0,0,.06);
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  transition:transform .2s ease;
-}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:0 4px 10px rgba(0,0,0,.06);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease}
 .card:hover{transform:translateY(-3px)}
-.card img {
-  width:100%;
-  aspect-ratio:3/4;
-  object-fit:cover;
-  object-position:center;
-  background:#eee;
-}
+.card img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center;background:#eee}
 .card-body{padding:8px}
 .title{font-weight:700;font-size:.9rem;line-height:1.3;margin-bottom:4px}
 .meta{font-size:.75rem;color:var(--muted);margin-bottom:4px}
@@ -94,104 +40,25 @@ h1{margin:0;font-weight:800}
 .stock-dot.bad{background:#d54b4b}
 .stock-text{font-weight:700;color:#222;font-size:.8rem}
 
-/* ---- کنترل‌های سبد ---- */
-.cart-controls{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  margin-top:6px;
-  flex-wrap:wrap;
-  font-size:0.85rem;
-}
-.btn-qty{
-  background:var(--brand-soft);
-  color:#fff;
-  border:none;
-  width:28px; height:28px;
-  font-size:15px;
-  border-radius:8px;
-  cursor:pointer;
-  transition:.2s filter;
-}
+.cart-controls{display:flex;align-items:center;gap:6px;margin-top:6px;flex-wrap:wrap;font-size:.85rem}
+.btn-qty{background:var(--brand-soft);color:#fff;border:none;width:28px;height:28px;font-size:15px;border-radius:8px;cursor:pointer;transition:.2s filter}
 .btn-qty:hover{filter:brightness(.92)}
-.qty-input{
-  width:56px;
-  text-align:center;
-  border:1px solid #ccc;
-  border-radius:8px;
-  padding:3px;
-  font-family:inherit;
-  font-size:0.8rem;
-  background:#fff;
-}
-.hint{
-  font-size:.75rem;
-  color:#999;
-  flex-basis:100%;
-}
-.btn-add{
-  flex:1;
-  background:linear-gradient(90deg,#5b2aa6,#7a3ef2);
-  color:#fff;
-  border:none;
-  padding:6px 8px;
-  border-radius:10px;
-  font-weight:600;
-  cursor:pointer;
-  transition:.2s;
-}
-.btn-add:hover{filter:brightness(1.1)}
+.qty-input{width:56px;text-align:center;border:1px solid #ccc;border-radius:8px;padding:3px;font-family:inherit;font-size:.8rem;background:#fff}
+.hint{font-size:.75rem;color:#999;flex-basis:100%}
 
 .empty,.loading{text-align:center;color:var(--muted);padding:28px}
 
-/* ---- دکمه شناور سبد ---- */
-#cart-btn {
-  position:fixed;
-  bottom:20px;
-  left:20px;
-  background:var(--brand);
-  color:#fff;
-  border:none;
-  border-radius:999px;
-  padding:14px 20px;
-  font-weight:700;
-  font-size:1rem;
-  box-shadow:0 6px 18px rgba(0,0,0,.25);
-  cursor:pointer;
-  z-index:100;
-}
+#cart-btn{position:fixed;bottom:20px;left:20px;background:var(--brand);color:#fff;border:none;border-radius:999px;padding:14px 20px;font-weight:700;font-size:1rem;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer;z-index:100}
 
-/* ---- پنل سبد خرید ---- */
-#cart-panel {
-  position:fixed; inset:0;
-  background:rgba(0,0,0,.5);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:200;
-}
-#cart-panel.active {display:flex;}
-.cart-box {
-  background:#fff;
-  border-radius:20px;
-  padding:24px;
-  width:min(500px,90%);
-  max-height:80vh;
-  overflow:auto;
-  box-shadow:0 8px 30px rgba(0,0,0,.25);
-  animation:pop .3s ease;
-}
-@keyframes pop {from{transform:scale(.9);opacity:0} to{transform:scale(1);opacity:1}}
-.cart-item {padding:6px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
-.cart-actions {display:flex;justify-content:space-between;align-items:center;margin-top:16px;}
-.btn-close {background:#ccc;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;}
-.btn-wa {
-  background:#25D366; color:#fff; border:none; padding:8px 14px;
-  border-radius:8px; font-weight:600; cursor:pointer;
-}
-.btn-remove{
-  background:#ffdddd;border:none;color:#d33;border-radius:6px;padding:3px 6px;cursor:pointer;font-size:.75rem;
-}
+#cart-panel{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:200}
+#cart-panel.active{display:flex}
+.cart-box{background:#fff;border-radius:20px;padding:24px;width:min(500px,90%);max-height:80vh;overflow:auto;box-shadow:0 8px 30px rgba(0,0,0,.25);animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.cart-item{padding:6px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+.cart-actions{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.btn-close{background:#ccc;border:none;padding:6px 12px;border-radius:8px;cursor:pointer}
+.btn-wa{background:#25D366;color:#fff;border:none;padding:8px 14px;border-radius:8px;font-weight:600;cursor:pointer}
+.btn-remove{background:#ffdddd;border:none;color:#d33;border-radius:6px;padding:3px 6px;cursor:pointer;font-size:.75rem}
 </style>
 </head>
 
@@ -219,12 +86,14 @@ h1{margin:0;font-weight:800}
 </div>
 
 <script>
+/* ===== تنظیمات ===== */
 const API_BASE = 'https://script.google.com/macros/s/AKfycbwuCceT_kp1PLKxEXz5wvcKXyx9RJHjPdgIHHIHtGOSBQ1cQRq4YViYOIHuRckkn1qOvQ/exec';
-const TELE_PROXY = 
+const TELE_PROXY = ''; // فعلاً پروکسی تصویر نداریم
 const PAGE_SIZE = 48;
 let allItems = [];
 const cart = {};
 
+/* ===== عناصر ===== */
 const elGrid = document.getElementById('grid');
 const elCartBtn = document.getElementById('cart-btn');
 const elCartCount = document.getElementById('cart-count');
@@ -232,7 +101,10 @@ const elCartPanel = document.getElementById('cart-panel');
 const elCartList = document.getElementById('cart-list');
 const elWASend = document.getElementById('wa-send');
 const elQ = document.getElementById('q');
+const elLoading = document.getElementById('loading');
+const elEmpty = document.getElementById('empty');
 
+/* ===== کارت محصول ===== */
 function cardHTML(it){
   const PLACEHOLDER =
     'data:image/svg+xml;utf8,' + encodeURIComponent(
@@ -243,40 +115,72 @@ function cardHTML(it){
 
   const isUrl = /^https?:\/\//i.test((it.photo_endpoint||'').trim());
   const hasProxy = TELE_PROXY && it.photo;
-  const imgSrc = isUrl ? it.photo_endpoint
-                       : (hasProxy ? `${TELE_PROXY}?fid=${encodeURIComponent(it.photo)}`
-                                   : PLACEHOLDER);
+  const imgSrc = isUrl ? it.photo_endpoint : (hasProxy ? `${TELE_PROXY}?fid=${encodeURIComponent(it.photo)}` : PLACEHOLDER);
 
-  // ... بقیه‌ی HTML کارت (بدون تغییر)
+  const available = Number(it.qty||0) > 0;
+  const stockHTML = available
+    ? `<span class="stock-dot ok"></span><span class="stock-text">موجود</span>`
+    : `<span class="stock-dot bad"></span><span class="stock-text">ناموجود</span>`;
+
+  // اگر ناموجود باشد، کنترل‌ها را نشان نده
+  const controls = available ? `
+    <div class="cart-controls">
+      <button class="btn-qty" data-op="minus" data-code="${it.code}" data-name="${it.name}">−</button>
+      <input type="number" class="qty-input" min="1" value="${cart[it.code]?.qty || 1}" data-code="${it.code}" data-name="${it.name}">
+      <button class="btn-qty" data-op="plus" data-code="${it.code}" data-name="${it.name}">+</button>
+      <span class="hint">تعداد مد نظر را بنویسید.</span>
+    </div>` : '';
+
+  return `<div class="card">
+    <img src="${imgSrc}" alt="${it.name||''}">
+    <div class="card-body">
+      <div class="title">${it.name||'-'}</div>
+      <div class="meta">کد: ${it.code||'-'}</div>
+      <div class="row">${stockHTML}</div>
+      ${controls}
+    </div>
+  </div>`;
 }
 
-/* -------- بارگذاری -------- */
-async function fetchPage(page){
-  const url = new URL(API_BASE, location.origin);
+/* ===== API ===== */
+async function fetchPage(page, q=""){
+  const url = new URL(API_BASE);
   url.searchParams.set('fn','products');
   url.searchParams.set('page',page);
   url.searchParams.set('pagesize',PAGE_SIZE);
-  const res = await fetch(url);
+  if(q) url.searchParams.set('q', q);
+  const res = await fetch(url.toString(), { cache: 'no-store' });
+  if(!res.ok) throw new Error('network');
   return res.json();
 }
 
-async function loadAll(){
-  const data = await fetchPage(0);
-  allItems = data.items || [];
-  elGrid.innerHTML = allItems.map(cardHTML).join('');
+/* ===== بارگذاری اولیه ===== */
+async function loadAll(q=""){
+  elLoading.style.display = 'block';
+  elEmpty.style.display = 'none';
+  try{
+    const data = await fetchPage(0, q);
+    allItems = data.items || [];
+    elGrid.innerHTML = allItems.map(cardHTML).join('');
+    if(allItems.length === 0) elEmpty.style.display = 'block';
+  }catch(e){
+    elGrid.innerHTML = '';
+    elEmpty.style.display = 'block';
+    elEmpty.textContent = 'خطا در دریافت اطلاعات.';
+  }finally{
+    elLoading.style.display = 'none';
+  }
 }
 
-/* -------- جستجو -------- */
+/* ===== جستجو (دیبانس) ===== */
+let qTimer = null;
 elQ.addEventListener('input', ()=>{
   const q = elQ.value.trim();
-  const list = q ? allItems.filter(it =>
-    (it.name||'').toLowerCase().includes(q.toLowerCase()) ||
-    (it.code||'').includes(q)
-  ) : allItems;
-  elGrid.innerHTML = list.map(cardHTML).join('');
+  if(qTimer) clearTimeout(qTimer);
+  qTimer = setTimeout(()=> loadAll(q), 300);
 });
 
-/* -------- مدیریت سبد -------- */
+/* ===== سبد خرید ===== */
 function updateCartCount(){
   const total = Object.values(cart).reduce((a,b)=>a+(b.qty||0),0);
   elCartCount.textContent = total;
@@ -297,12 +201,9 @@ function renderCart(){
       </div>
     </div>`).join('');
 }
-function openCart(){
-  renderCart();
-  elCartPanel.classList.add('active');
-}
+function openCart(){ renderCart(); elCartPanel.classList.add('active'); }
 
-/* -------- واتساپ -------- */
+/* واتساپ */
 function makeWAurl(){
   let txt = `💜 *پخش پارادایس | Paradise Distribution*\n🧾 *پیش‌فاکتور سفارش*\n\n`;
   Object.entries(cart).forEach(([c,info],i)=>{
@@ -312,37 +213,47 @@ function makeWAurl(){
   return `https://wa.me/989027898758?text=${encodeURIComponent(txt)}`;
 }
 
-/* -------- رویدادها -------- */
+/* ===== رویدادها ===== */
 document.body.addEventListener('click', e=>{
-  if(e.target.matches('.btn-add')){
-    const code = e.target.dataset.code;
-    const name = e.target.dataset.name;
-    const qtyInput = document.querySelector(`.qty-input[data-code="${code}"]`);
-    const qty = parseInt(qtyInput.value,10) || 1;
-    cart[code] = {name, qty};
+  // دکمه‌های +/−
+  const qtyBtn = e.target.closest('.btn-qty');
+  if(qtyBtn){
+    const code = qtyBtn.dataset.code;
+    const name = qtyBtn.dataset.name || '';
+    const input = document.querySelector(`.qty-input[data-code="${code}"]`);
+    let val = parseInt(input.value,10) || 1;
+    val = qtyBtn.dataset.op==='plus' ? val+1 : Math.max(1, val-1);
+    input.value = val;
+    // همیشه مستقیم به سبد
+    cart[code] = { name, qty: val };
     updateCartCount();
   }
+
+  if(e.target.matches('#cart-btn')) openCart();
+  if(e.target.matches('.btn-close')) elCartPanel.classList.remove('active');
   if(e.target.matches('.btn-remove')){
     const code = e.target.dataset.code;
     delete cart[code];
     updateCartCount();
     renderCart();
   }
-  if(e.target.matches('.btn-qty')){
-    const code = e.target.dataset.code;
-    const input = document.querySelector(`.qty-input[data-code="${code}"]`);
-    let val = parseInt(input.value,10)||1;
-    val = e.target.dataset.op==='plus'? val+1 : Math.max(1,val-1);
-    input.value=val;
-    if(cart[code]) cart[code].qty=val;
-    updateCartCount();
-  }
-  if(e.target.matches('#cart-btn')) openCart();
-  if(e.target.matches('.btn-close')) elCartPanel.classList.remove('active');
   if(e.target.matches('.btn-wa')) window.open(makeWAurl(),'_blank');
 });
 
-/* -------- شروع -------- */
+// تغییر مستقیم داخل input مقدار را به سبد وصل کند
+document.body.addEventListener('input', e=>{
+  const inp = e.target.closest('.qty-input');
+  if(!inp) return;
+  const code = inp.dataset.code;
+  const name = inp.dataset.name || '';
+  let val = parseInt(inp.value,10);
+  if(isNaN(val) || val < 1) val = 1;
+  inp.value = val;
+  cart[code] = { name, qty: val };
+  updateCartCount();
+});
+
+/* شروع */
 loadAll();
 </script>
 </body>
