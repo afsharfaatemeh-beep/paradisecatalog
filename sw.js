@@ -1,5 +1,5 @@
 // ultra-light cache
-const CACHE = 'catalog-v20';
+const CACHE = 'catalog-v21';
 const ASSETS = [
   './',
   './index.html',
@@ -87,3 +87,4 @@ self.addEventListener('fetch', (e) => {
       .catch(() => caches.match(req, { ignoreSearch: true }))
   );
 });
+
