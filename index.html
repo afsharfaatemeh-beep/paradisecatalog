@@ -116,7 +116,11 @@ function cardHTML(it){
 
   const isUrl = /^https?:\/\//i.test((it.photo_endpoint||'').trim());
   const hasProxy = TELE_PROXY && it.photo;
-  const imgSrc = isUrl ? it.photo_endpoint : (hasProxy ? `${TELE_PROXY}?fid=${encodeURIComponent(it.photo)}` : PLACEHOLDER);
+  const imgSrc = /^https?:\/\//i.test((it.photo_endpoint||'').trim())
+  ? it.photo_endpoint
+  : (it.photo
+      ? `${TELE_PROXY}?fn=tg-image&fid=${encodeURIComponent(it.photo)}`
+      : PLACEHOLDER);
 
   const available = Number(it.qty||0) > 0;
   const stockHTML = available
